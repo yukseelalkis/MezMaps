@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mezmaps/feature/home_view.dart';
+import 'package:mezmaps/feature/home/home_view.dart';
 import 'package:mezmaps/product/theme/custom_dark_theme.dart';
 import 'package:mezmaps/product/theme/custom_ligth_theme.dart';
 
