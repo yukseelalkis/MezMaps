@@ -22,6 +22,9 @@ dependencies:
   common:
     path: module/common
 
+  gen:
+    path: module/gen
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
