@@ -5,7 +5,7 @@ class CustomColorTheme {
   static ColorScheme lightScheme() {
     return const ColorScheme(
       brightness: Brightness.light,
-      primary: Color(0xff39693c),
+      primary: Color.fromARGB(255, 103, 158, 106),
       surfaceTint: Color(0xff39693c),
       onPrimary: Color(0xffffffff),
       primaryContainer: Color(0xffbaf0b7),
