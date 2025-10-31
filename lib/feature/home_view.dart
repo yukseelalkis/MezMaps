@@ -7,7 +7,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Data')),
-      body: ElevatedButton(onPressed: () {}, child: Text('deniz')),
+      body: ElevatedButton(onPressed: () {}, child: Text('deniz kamer')),
       floatingActionButton: FloatingActionButton(onPressed: () {} ),
     );
   }
