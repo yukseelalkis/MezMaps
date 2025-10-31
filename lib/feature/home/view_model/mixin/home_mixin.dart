@@ -1,4 +1,4 @@
-import 'package:mezmaps/feature/home/home_view.dart';
+import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/feature/home/view_model/home_view_model.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 
