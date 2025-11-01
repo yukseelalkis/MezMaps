@@ -38,4 +38,9 @@ final class PaddingManager {
   /// Returns only the large padding value as double (3% of screen height).
   static double morePadding(BuildContext context) =>
       MediaQuery.sizeOf(context).height * 0.03;
+
+  /// Returns padding optimized for button content.
+  /// (4% horizontal, 1.2% vertical)
+  static EdgeInsets buttonContentPadding(BuildContext context) =>
+      EdgeInsets.only(right: MediaQuery.sizeOf(context).width * 0.06);
 }

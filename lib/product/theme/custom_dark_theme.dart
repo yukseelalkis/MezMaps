@@ -73,15 +73,34 @@ class CustomDarkTheme implements CustomTheme {
   @override
   ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
     style: ButtonStyle(
-      minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)), // tek boy
+      minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
-      backgroundColor: WidgetStatePropertyAll(_scheme.inversePrimary),
-      foregroundColor: WidgetStatePropertyAll(_scheme.onSurface),
-      overlayColor: WidgetStatePropertyAll(_scheme.onPrimary.withValues()),
+      // Arka plan: koyu modda “primaryContainer” (orta tonda vurgu)
+      backgroundColor: WidgetStatePropertyAll(_scheme.primaryContainer),
+      // Yazı rengi: o zemine karşılık gelen kontrast rengi
+      foregroundColor: WidgetStatePropertyAll(_scheme.onPrimaryContainer),
+      // Hover / basılı renk: primary renginin %10 opak hali
+      overlayColor: WidgetStatePropertyAll(_scheme.primary.withOpacity(0.1)),
+      // Hafif gölge: dark mode’da derinlik verir
+      elevation: const WidgetStatePropertyAll(4),
+      shadowColor: WidgetStatePropertyAll(_scheme.primary.withOpacity(0.4)),
     ),
   );
+
+  // @override
+  // ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
+  //   style: ButtonStyle(
+  //     minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)), // tek boy
+  //     shape: WidgetStatePropertyAll(
+  //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+  //     ),
+  //     backgroundColor: WidgetStatePropertyAll(_scheme.inversePrimary),
+  //     foregroundColor: WidgetStatePropertyAll(_scheme.onSurface),
+  //     overlayColor: WidgetStatePropertyAll(_scheme.onPrimary.withValues()),
+  //   ),
+  // );
 
   @override
   FilledButtonThemeData get filledButtonTheme => FilledButtonThemeData(

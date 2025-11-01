@@ -1,0 +1,119 @@
+part of '../view/home_view.dart';
+
+class _logo extends StatelessWidget {
+  const _logo();
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: Assets.images.logo.image(package: 'gen', width: 170));
+  }
+}
+
+class _CustomButton extends StatelessWidget {
+  const _CustomButton({
+    required this.logo,
+    required this.text,
+    required this.onPressed,
+  });
+  final Widget logo;
+  final String text;
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: PaddingManager.normalPaddingAll(context),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Row(
+          children: [
+            Padding(
+              padding: PaddingManager.buttonContentPadding(context),
+              child: logo,
+            ),
+            Expanded(child: Text(text)),
+            Icon(Icons.arrow_forward_ios_rounded),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Ayarlanacak
+class _bottomBar extends StatelessWidget {
+  const _bottomBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      color: Colors.white,
+      elevation: 10,
+      height: 88,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          //ANA MENÜ
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+              SizedBox(height: 2),
+              Text('Ana Menü', style: TextStyle(fontSize: 10)),
+            ],
+          ),
+          //MEZARLIKLAR
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Assets.icons.mLight.image(
+                  package: 'gen',
+                  width: 24,
+                  height: 24,
+                ),
+                iconSize: 20,
+              ),
+              SizedBox(height: 2),
+              Text('Mezarlıklar', style: TextStyle(fontSize: 10)),
+            ],
+          ),
+          //MEZARLIK KONUMLARI
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Assets.icons.mkLight.image(
+                  package: 'gen',
+                  width: 24,
+                  height: 24,
+                ),
+                iconSize: 20,
+              ),
+              SizedBox(height: 2),
+              Text('Mezarlık Konumları', style: TextStyle(fontSize: 10)),
+            ],
+          ),
+
+          // VEFAT EDENLER
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Assets.icons.vfLight.image(
+                  package: 'gen',
+                  width: 24,
+                  height: 24,
+                ),
+                iconSize: 20,
+              ),
+              SizedBox(height: 2),
+              Text('Vefat Edenler', style: TextStyle(fontSize: 10)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

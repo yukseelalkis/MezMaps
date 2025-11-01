@@ -1,3 +1,4 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:mezmaps/product/theme/custom_theme.dart';
 import 'package:mezmaps/product/theme/theme.dart'; // CustomColorTheme burada
@@ -75,13 +76,33 @@ class CustomLightTheme implements CustomTheme {
     style: ButtonStyle(
       minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)),
       shape: WidgetStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        RoundedRectangleBorder(
+          borderRadius:
+              BorderRadiusManager.extraMoreBorderRadius, // senin manager
+        ),
       ),
-      backgroundColor: WidgetStatePropertyAll(_scheme.primary),
-      foregroundColor: WidgetStatePropertyAll(_scheme.onPrimary),
+      elevation: const WidgetStatePropertyAll(10),
+      shadowColor: WidgetStatePropertyAll(
+        Colors.green,
+      ), // .withValues() gerekmez
+      backgroundColor: WidgetStatePropertyAll(_scheme.inversePrimary),
+      foregroundColor: WidgetStatePropertyAll(_scheme.onSurface),
       overlayColor: WidgetStatePropertyAll(_scheme.onPrimary.withValues()),
     ),
   );
+
+  // @override
+  // ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
+  //   style: ButtonStyle(
+  //     minimumSize: const WidgetStatePropertyAll(Size.fromHeight(48)),
+  //     shape: WidgetStatePropertyAll(
+  //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+  //     ),
+  //     backgroundColor: WidgetStatePropertyAll(_scheme.primary),
+  //     foregroundColor: WidgetStatePropertyAll(_scheme.onPrimary),
+  //     overlayColor: WidgetStatePropertyAll(_scheme.onPrimary.withValues()),
+  //   ),
+  // );
 
   @override
   FilledButtonThemeData get filledButtonTheme => FilledButtonThemeData(
