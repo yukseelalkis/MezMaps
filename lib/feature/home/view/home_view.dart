@@ -21,7 +21,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       appBar: AppBar(title: Text(ProjectString.appName)),
       body: Column(
         children: [
-          _logo(),
+          _Logo(),
 
           /// Mezxarliklar
           _CustomButton(
@@ -66,94 +66,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
           ),
         ],
       ),
-      bottomNavigationBar: _bottomBar(),
+      bottomNavigationBar: _BottomBar(),
     );
   }
 }
-
-// class _mkButton extends StatelessWidget {
-//   const _mkButton();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-//       child: ElevatedButton(
-//         onPressed: () {},
-//         style: ElevatedButton.styleFrom(
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadiusGeometry.circular(30),
-//           ),
-//           elevation: 10,
-//           shadowColor: Colors.green.withValues(),
-//         ),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: [
-//             Assets.icons.mkLight.image(package: 'gen', height: 25, width: 25),
-//             SizedBox(width: 20),
-//             Expanded(child: Text("Mezarlık Konumları")),
-//             Icon(Icons.arrow_forward_ios_rounded),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class _vfButton extends StatelessWidget {
-//   const _vfButton();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-//       child: ElevatedButton(
-//         onPressed: () {},
-//         style: ElevatedButton.styleFrom(
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadiusGeometry.circular(30),
-//           ),
-//           elevation: 10,
-//           shadowColor: Colors.green.withValues(),
-//         ),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: [
-//             Assets.icons.vfLight.image(package: 'gen', height: 25, width: 25),
-//             SizedBox(width: 20),
-//             Expanded(child: Text('Vefat Edenler')),
-//             Icon(Icons.arrow_forward_ios_rounded),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class _infoButton extends StatelessWidget {
-//   const _infoButton();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-//       child: ElevatedButton(
-//         onPressed: () {},
-//         style: ElevatedButton.styleFrom(
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadiusGeometry.circular(30),
-//           ),
-//           elevation: 10,
-//           shadowColor: Colors.green.withValues(),
-//         ),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: [
-//             Assets.icons.infoLight.image(package: 'gen', height: 25, width: 25),
-//             SizedBox(width: 20),
-//             Expanded(child: Text("Hakkında")),
-//             Icon(Icons.arrow_forward_ios_rounded),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

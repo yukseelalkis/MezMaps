@@ -1,7 +1,7 @@
 part of '../view/home_view.dart';
 
-class _logo extends StatelessWidget {
-  const _logo();
+class _Logo extends StatelessWidget {
+  const _Logo();
   @override
   Widget build(BuildContext context) {
     return Center(child: Assets.images.logo.image(package: 'gen', width: 170));
@@ -9,12 +9,8 @@ class _logo extends StatelessWidget {
 }
 
 class _CustomButton extends StatelessWidget {
-  const _CustomButton({
-    required this.logo,
-    required this.text,
-    required this.onPressed,
-  });
-  final Widget logo;
+  const _CustomButton({this.logo, required this.text, required this.onPressed});
+  final Widget? logo;
   final String text;
   final VoidCallback onPressed;
   @override
@@ -39,13 +35,12 @@ class _CustomButton extends StatelessWidget {
 }
 
 /// Ayarlanacak
-class _bottomBar extends StatelessWidget {
-  const _bottomBar();
+class _BottomBar extends StatelessWidget {
+  const _BottomBar();
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.white,
       elevation: 10,
       height: 88,
       child: Row(
