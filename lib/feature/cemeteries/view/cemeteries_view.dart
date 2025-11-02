@@ -154,9 +154,24 @@ final class _CemeteriesViewState extends BaseState<CemeteriesView>
                                   Icons.arrow_forward_ios_rounded,
                                   size: 18,
                                 ),
-                                onTap: () {
-                                  // TODO: detay/harita
+                                onTap: () async {
+                                  final ok = await urlPackage.openMap(
+                                    lat: c.lat, // double
+                                    lng: c.lng, // double
+                                    label: c.name, // pin başlığı
+                                    zoom: 16, // opsiyonel
+                                    // iOS'ta önce Google Maps dene (yüklüyse), sonra Apple Maps
+                                    preferGoogle: true,
+                                  );
+                                  if (!ok && context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Harita açılamadı'),
+                                      ),
+                                    );
+                                  }
                                 },
+
                               ),
                             );
                           },
