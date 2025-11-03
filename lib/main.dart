@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mezmaps/feature/cemeteries/view/cemeteries_view.dart';
+import 'package:mezmaps/feature/grave_location/view/grave_location_view.dart';
+import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/theme/custom_dark_theme.dart';
 import 'package:mezmaps/product/theme/custom_ligth_theme.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
       themeMode: ThemeMode.dark,
-      home: CemeteriesView(),
+      home: GraveLocationView(),
     );
   }
 }
