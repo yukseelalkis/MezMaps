@@ -6,6 +6,7 @@ import 'package:mezmaps/feature/home/view_model/mixin/home_mixin.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 import 'package:gen/gen.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
+import 'package:mezmaps/product/utility/navigation/navigation_ext.dart';
 
 part '../widget/home_view_widget.dart';
 
@@ -35,10 +36,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             ),
             text: ProjectString.cemeteries,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CemeteriesView()),
-              );
+              context.pushTo(CemeteriesView());
             },
           ),
 
@@ -52,12 +50,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             ),
             text: ProjectString.cemeteryLocations,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const GraveSearchPage(),
-                ),
-              );
+              context.pushTo(GraveSearchPage());
             },
           ),
           _CustomButton(

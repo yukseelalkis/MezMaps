@@ -50,7 +50,12 @@ class BottomBar extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+              IconButton(
+                onPressed: () {
+                  context.replaceNoAnim(const HomeView());
+                },
+                icon: Icon(Icons.home),
+              ),
               SizedBox(height: 2),
               Text('Ana Menü', style: TextStyle(fontSize: 10)),
             ],
@@ -60,7 +65,9 @@ class BottomBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushTo(CemeteriesView());
+                },
                 icon: Assets.icons.mLight.image(
                   package: 'gen',
                   width: 24,
@@ -77,7 +84,9 @@ class BottomBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushTo(GraveSearchPage());
+                },
                 icon: Assets.icons.mkLight.image(
                   package: 'gen',
                   width: 24,

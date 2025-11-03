@@ -6,6 +6,7 @@ import 'package:gen/gen.dart';
 import 'package:mezmaps/feature/cemeteries/view_model/mixin/cemetries_mixin.dart';
 import 'package:mezmaps/feature/cemeteries/view_model/cemetries_view_model.dart';
 import 'package:mezmaps/feature/cemeteries/view_model/state/cemetries_state.dart';
+import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
 import 'package:mezmaps/product/widgets/custom_app_bar.dart';
@@ -195,7 +196,9 @@ final class _CemeteriesViewState extends BaseState<CemeteriesView>
             );
           },
         ),
+      
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

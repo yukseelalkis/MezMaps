@@ -43,4 +43,11 @@ final class PaddingManager {
   /// (4% horizontal, 1.2% vertical)
   static EdgeInsets buttonContentPadding(BuildContext context) =>
       EdgeInsets.only(right: MediaQuery.sizeOf(context).width * 0.06);
+
+  static EdgeInsets responsiveLTRB(BuildContext context) => EdgeInsets.fromLTRB(
+    MediaQuery.sizeOf(context).width * 0.04,
+    MediaQuery.sizeOf(context).height * 0.015,
+    MediaQuery.sizeOf(context).width * 0.04,
+    MediaQuery.sizeOf(context).height * 0.015,
+  );
 }
