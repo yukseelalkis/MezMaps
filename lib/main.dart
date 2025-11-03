@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
-      themeMode: ThemeMode.dark,
-      home: GraveLocationView(),
+      themeMode: ThemeMode.light,
+      home: GraveSearchPage(),
     );
   }
 }

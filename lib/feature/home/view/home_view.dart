@@ -72,7 +72,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
           ),
         ],
       ),
-      bottomNavigationBar: _BottomBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

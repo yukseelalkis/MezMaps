@@ -35,8 +35,8 @@ class _CustomButton extends StatelessWidget {
 }
 
 /// Ayarlanacak
-class _BottomBar extends StatelessWidget {
-  const _BottomBar();
+class BottomBar extends StatelessWidget {
+  const BottomBar();
 
   @override
   Widget build(BuildContext context) {
