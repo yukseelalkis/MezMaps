@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
       themeMode: ThemeMode.light,
-      home: GraveSearchPage(),
+      home: HomeView(),
     );
   }
 }

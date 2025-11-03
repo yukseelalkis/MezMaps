@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gen/gen.dart';
 import 'package:mezmaps/feature/home/view/home_view.dart';
+import 'package:mezmaps/product/utility/constant/language/product_string.dart';
+import 'package:mezmaps/product/widgets/custom_app_bar.dart';
 
 class GraveSearchPage extends StatefulWidget {
   const GraveSearchPage({super.key});
@@ -75,7 +78,10 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('MEZAR KONUMU'), centerTitle: true),
+      appBar: CustomAppbar(
+        text: ProjectString.cemeteryLocations,
+        widget: Assets.icons.mkLight.image(package: 'gen', width: 35),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
