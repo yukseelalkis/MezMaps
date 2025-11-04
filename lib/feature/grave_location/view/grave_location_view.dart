@@ -25,6 +25,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       'Çelik',
       21,
       '13.05.2025',
+      '13.05.2025',
       'A-13',
       'Asri Mezarlık',
       "Esra",
@@ -35,25 +36,28 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       'Alkış',
       24,
       '03.07.2011',
+      '03.07.2011',
       'B-14',
       'Yeşilkent Mezarlığı',
       "Saliha",
       "Murat",
     ),
     _Grave(
-      'Ayşe',
-      'Yılmaz',
-      68,
-      '01.04.2020',
+      'Vahap',
+      'Soylu',
+      21,
+      '21.09.2021',
+      '23.09.2021',
       'C-15',
-      'Yeşilkent Mezarlığı',
-      "Esma",
-      "Ali",
+      'Asri Mezarlık',
+      'Meliha',
+      'İMAM-I AZAM',
     ),
     _Grave(
       "Eren",
       "Selli",
       31,
+      '22.10.2024',
       "22.10.2024",
       "D-16",
       "Asri Mezarlık",
@@ -84,7 +88,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+    final gl = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: CustomAppbar(
         text: ProjectString.cemeteryLocations,
@@ -177,7 +181,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
             const SizedBox(height: 8),
             Text(
               'Kayıtlı Mezar Sayısı: ${_result.length}',
-              style: TextStyle(color: cs.onSurfaceVariant),
+              style: TextStyle(color: gl.onSurfaceVariant),
             ),
             const SizedBox(height: 12),
             ..._result.map((g) => _GraveCard(g)).toList(),
@@ -233,7 +237,7 @@ class _GraveCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _kv('Vefat Tarihi:', g.definTarihi),
+                _kv('Vefat Tarihi:', g.vefatTarihi),
                 _kv('Defin:', g.definTarihi),
               ],
             ),
@@ -267,12 +271,20 @@ class _GraveCard extends StatelessWidget {
 }
 
 class _Grave {
-  final String ad, soyad, definTarihi, definYeri, mezarlik, anneAdi, babaAdi;
+  final String ad,
+      soyad,
+      definTarihi,
+      definYeri,
+      vefatTarihi,
+      mezarlik,
+      anneAdi,
+      babaAdi;
   final int yas;
   const _Grave(
     this.ad,
     this.soyad,
     this.yas,
+    this.vefatTarihi,
     this.definTarihi,
     this.definYeri,
     this.mezarlik,
