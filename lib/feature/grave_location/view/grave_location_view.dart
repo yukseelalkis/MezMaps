@@ -19,8 +19,8 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
   final _mezarliklar = const ['Asri Mezarlık', 'Yeşilkent Mezarlığı'];
   String? _mezarlik = null;
 
-  final List<_Grave> _all = const [
-    _Grave(
+  final List<Grave> _all = const [
+    Grave(
       'Deniz',
       'Çelik',
       21,
@@ -31,7 +31,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       "Esra",
       "BİLO BABA",
     ),
-    _Grave(
+    Grave(
       'Yüksel',
       'Alkış',
       24,
@@ -42,7 +42,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       "Saliha",
       "Murat",
     ),
-    _Grave(
+    Grave(
       'Vahap',
       'Soylu',
       21,
@@ -53,7 +53,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       'Meliha',
       'İMAM-I AZAM',
     ),
-    _Grave(
+    Grave(
       "Eren",
       "Selli",
       31,
@@ -65,7 +65,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
       "Şükrü",
     ),
   ];
-  late List<_Grave> _result = List.of(_all);
+  late List<Grave> _result = List.of(_all);
 
   // yazdıgımız isimleri ekranda gösteren kısım
   void _search() {
@@ -196,7 +196,7 @@ class _GraveSearchPageState extends State<GraveSearchPage> {
 
 class _GraveCard extends StatelessWidget {
   const _GraveCard(this.g);
-  final _Grave g;
+  final Grave g;
 
   @override
   Widget build(BuildContext context) {
@@ -270,7 +270,7 @@ class _GraveCard extends StatelessWidget {
   );
 }
 
-class _Grave {
+class Grave {
   final String ad,
       soyad,
       definTarihi,
@@ -280,7 +280,7 @@ class _Grave {
       anneAdi,
       babaAdi;
   final int yas;
-  const _Grave(
+  const Grave(
     this.ad,
     this.soyad,
     this.yas,

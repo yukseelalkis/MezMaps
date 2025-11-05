@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:mezmaps/feature/cemeteries/view/cemeteries_view.dart';
+import 'package:mezmaps/feature/deaths/view/deaths_view.dart';
 import 'package:mezmaps/feature/grave_location/view/grave_location_view.dart';
 import 'package:mezmaps/feature/home/view_model/mixin/home_mixin.dart';
 import 'package:mezmaps/feature/info/view/info_view.dart';
@@ -61,7 +62,9 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
               width: 25,
             ),
             text: ProjectString.deceasedPeople,
-            onPressed: () {},
+            onPressed: () {
+              context.pushTo(DeathsPage());
+            },
           ),
           _CustomButton(
             logo: Assets.icons.infoLight.image(
@@ -69,6 +72,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
               height: 25,
               width: 25,
             ),
+
             text: ProjectString.about,
             onPressed: () {
               context.pushTo(InfoView());
