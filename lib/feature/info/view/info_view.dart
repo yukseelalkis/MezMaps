@@ -18,13 +18,13 @@ class InfoViewState extends State<InfoView> {
     final inf = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: CustomAppbar(
-        text: ProjectString.about, 
-        widget: Assets.icons.infoLight.image(package: 'gen',height: 20)),
-      
+        text: ProjectString.about,
+        widget: Assets.icons.infoLight.image(package: 'gen', height: 20),
+      ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
-           
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -38,18 +38,14 @@ class InfoViewState extends State<InfoView> {
               padding: PaddingManager.morePaddingSymmetricVertical(context),
               child: Column(
                 children: [
-                  Icon(
-                    Icons.location_on,
-                    size: 80,
-                    color: inf.onPrimary,
-                  ),
+                  Icon(Icons.location_on, size: 80, color: inf.onPrimary),
                   const SizedBox(height: 16),
                   const Text(
                     ProjectString.aboutTop,
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      //Theme dan çekemiyorum 
+                      //Theme dan çekemiyorum
                       color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
@@ -57,10 +53,7 @@ class InfoViewState extends State<InfoView> {
                   const SizedBox(height: 8),
                   Text(
                     ProjectString.aboutTop1,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: inf.onPrimary,
-                    ),
+                    style: TextStyle(fontSize: 16, color: inf.onPrimary),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -73,30 +66,28 @@ class InfoViewState extends State<InfoView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   // Misyon Bölümü
                   _buildSection(
                     title: ProjectString.aboutM,
-                    content:ProjectString.aboutTopM1,
+                    content: ProjectString.aboutTopM1,
                   ),
 
                   const SizedBox(height: 24),
 
                   // Sorun ve Çözüm
                   _buildSection(
-                    
                     title: ProjectString.aboutTopC,
-                    content:ProjectString.aboutTopC1,
+                    content: ProjectString.aboutTopC1,
                   ),
 
                   const SizedBox(height: 24),
 
                   // Özellikler
                   _buildFeatureCard(
-                    //İconlar genden çekilebilir beceremedim 
+                    //İconlar genden çekilebilir beceremedim
                     icon: Icons.navigation,
                     title: ProjectString.aboutN,
-                    description:ProjectString.aboutN1,
+                    description: ProjectString.aboutN1,
                   ),
 
                   const SizedBox(height: 16),
@@ -104,7 +95,7 @@ class InfoViewState extends State<InfoView> {
                   _buildFeatureCard(
                     icon: Icons.search,
                     title: ProjectString.aboutA,
-                    description:ProjectString.aboutA1,
+                    description: ProjectString.aboutA1,
                   ),
 
                   const SizedBox(height: 16),
@@ -112,7 +103,7 @@ class InfoViewState extends State<InfoView> {
                   _buildFeatureCard(
                     icon: Icons.map,
                     title: ProjectString.aboutH,
-                    description:ProjectString.aboutH1,
+                    description: ProjectString.aboutH1,
                   ),
 
                   const SizedBox(height: 32),
@@ -124,21 +115,17 @@ class InfoViewState extends State<InfoView> {
                     decoration: BoxDecoration(
                       color: inf.surfaceDim,
                       borderRadius: BorderRadius.circular(30),
-                      
                     ),
                     child: Column(
                       children: [
-                        Icon(
-                          Icons.local_florist,
-                          size: 40,
-                        ),
+                        Icon(Icons.local_florist, size: 40),
                         const SizedBox(height: 12),
                         Text(
                           ProjectString.aboutAni,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: inf.onSurface
+                            color: inf.onSurface,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -146,7 +133,7 @@ class InfoViewState extends State<InfoView> {
                           ProjectString.aboutAni1,
                           style: TextStyle(
                             fontSize: 14,
-                            color:inf.inverseSurface,
+                            color: inf.inverseSurface,
                             height: 1.5,
                           ),
                           textAlign: TextAlign.center,
@@ -162,7 +149,7 @@ class InfoViewState extends State<InfoView> {
                     child: Column(
                       children: [
                         Text(
-                         ProjectString.aboutDs,
+                          ProjectString.aboutDs,
                           style: TextStyle(
                             fontSize: 14,
                             color: inf.inverseSurface,
@@ -192,10 +179,7 @@ class InfoViewState extends State<InfoView> {
     );
   }
 
-  Widget _buildSection({
-    required String title,
-    required String content,
-  }) {
+  Widget _buildSection({required String title, required String content}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -254,11 +238,7 @@ class InfoViewState extends State<InfoView> {
               color: Colors.grey[100],
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(
-              icon,
-              color: Colors.grey[700],
-              size: 28,
-            ),
+            child: Icon(icon, color: Colors.grey[700], size: 28),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -276,10 +256,7 @@ class InfoViewState extends State<InfoView> {
                 const SizedBox(height: 4),
                 Text(
                   description,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
               ],
             ),

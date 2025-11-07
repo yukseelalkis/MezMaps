@@ -1,4 +1,4 @@
-import 'package:mezmaps/product/mock/data/cemetries_data.dart';
+import 'package:mezmaps/product/mock/data/mock_cemetries_data.dart';
 import 'package:mezmaps/product/mock/interface/cemetery_repository.dart';
 import 'package:mezmaps/product/mock/model/mock_model.dart';
 

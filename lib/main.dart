@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mezmaps/feature/cemeteries/view/cemeteries_view.dart';
-import 'package:mezmaps/feature/grave_location/view/grave_location_view.dart';
 import 'package:mezmaps/feature/home/view/home_view.dart';
-import 'package:mezmaps/feature/info/view/info_view.dart';
 import 'package:mezmaps/product/theme/custom_dark_theme.dart';
 import 'package:mezmaps/product/theme/custom_ligth_theme.dart';
 

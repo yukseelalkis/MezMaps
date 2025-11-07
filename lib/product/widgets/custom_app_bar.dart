@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 final class CustomAppbar extends StatelessWidget
     implements PreferredSizeWidget {
-  const CustomAppbar({required this.text, required this.widget});
+  const CustomAppbar({required this.text, required this.widget, super.key});
   final String text;
   final Widget widget;
 

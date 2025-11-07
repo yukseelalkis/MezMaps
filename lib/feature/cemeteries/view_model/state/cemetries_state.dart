@@ -4,7 +4,7 @@ import 'package:mezmaps/product/mock/model/mock_model.dart';
 final class CemetriesState extends Equatable {
   const CemetriesState({
     required this.isLoading,
-    this.error, // ✅ eklendi
+    this.error,
     this.provinces = const [],
     this.districts = const [],
     this.cemeteries = const [],
@@ -13,7 +13,7 @@ final class CemetriesState extends Equatable {
   });
 
   final bool isLoading;
-  final String? error; // ✅ eklendi
+  final String? error;
 
   final List<Province> provinces;
   final List<District> districts;
@@ -37,7 +37,7 @@ final class CemetriesState extends Equatable {
 
   CemetriesState copyWith({
     bool? isLoading,
-    String? error, // ✅ parametre var
+    String? error,
     List<Province>? provinces,
     List<District>? districts,
     List<Cemetery>? cemeteries,
@@ -55,6 +55,5 @@ final class CemetriesState extends Equatable {
     );
   }
 
-  // İstersen kısayol:
   CemetriesState clearError() => copyWith(error: null);
 }

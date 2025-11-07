@@ -34,9 +34,10 @@ class _CustomButton extends StatelessWidget {
   }
 }
 
+///TODO:DUZELTMESI GEREKEN KISIMLAR VAR
 /// Ayarlanacak
 class BottomBar extends StatelessWidget {
-  const BottomBar();
+  const BottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class BottomBar extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  context.pushTo(GraveSearchPage());
+                  context.pushTo(GraveSearchView());
                 },
                 icon: Assets.icons.mkLight.image(
                   package: 'gen',
