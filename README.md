@@ -31,7 +31,7 @@ defin konumlarını görüntüleyebilir ve mezarlıkları harita üzerinde incel
 
 | Ana Menü | Mezarlıklar | Mezarlık Konumu | Vefat Edenler |
 |-----------|--------------|------------------|----------------|
-| ![Home](./readme_assets/AnaSayfa.png) | ![Cemeteries](./readme_assets/Mezarlıklar.png) | ![Search](./readme_assets/MezarlıkKonumu.png) | ![Deaths](./readme_assets/VefatEdenler.png) |
+| ![Home](./readme_assets/Home.png) | ![Cemeteries](./readme_assets/Cemeteries.png) | ![Search](./readme_assets/Grave_location.png) | ![Deaths](./readme_assets/deaths.png) |
 
 
 ---
@@ -85,7 +85,6 @@ defin konumlarını görüntüleyebilir ve mezarlıkları harita üzerinde incel
 - [ ] Harita üzerinde dinamik rota gösterimi  
 - [ ] Kullanıcı oturumu ve giriş sistemi  
 - [ ] Favori mezarlıkları kaydetme özelliği  
-- [ ] Karanlık tema desteği  
 
 ---
 
