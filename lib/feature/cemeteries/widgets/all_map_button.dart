@@ -63,7 +63,8 @@ final class _CemeteriesEmptyState extends StatelessWidget {
   }
 }
 
-class _CemeteriesList extends StatelessWidget {
+@immutable
+final class _CemeteriesList extends StatelessWidget {
   const _CemeteriesList({required this.cemeteries, required this.viewModel});
 
   final List<Cemetery> cemeteries;
