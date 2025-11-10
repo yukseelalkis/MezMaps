@@ -9,7 +9,8 @@ import 'package:mezmaps/feature/grave_search/view_model/state/grave_location_sta
 import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
-import 'package:mezmaps/product/widgets/custom_app_bar.dart';
+import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart';
+import 'package:mezmaps/product/widgets/custom_text_field.dart';
 
 class GraveSearchView extends StatefulWidget {
   const GraveSearchView({super.key});
@@ -18,6 +19,7 @@ class GraveSearchView extends StatefulWidget {
   State<GraveSearchView> createState() => _GraveSearchViewState();
 }
 
+@immutable
 final class _GraveSearchViewState extends BaseState<GraveSearchView>
     with GraveSearchMixin {
   @override
@@ -32,85 +34,37 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
       body: BlocBuilder<GraveSearchViewModel, GraveSearchState>(
         bloc: graveSearchViewModel,
         builder: (context, state) {
-          final String? selectedProvince =
-              (state.selectedProvince != null &&
-                  state.provinceList.contains(state.selectedProvince))
-              ? state.selectedProvince
-              : null;
-
-          final String? selectedDistrict =
-              (state.selectedDistrict != null &&
-                  state.districtList.contains(state.selectedDistrict))
-              ? state.selectedDistrict
-              : null;
-
-          final String? selectedCemetery =
-              (state.selectedCemetery != null &&
-                  state.cemeteryList.contains(state.selectedCemetery))
-              ? state.selectedCemetery
-              : null;
-
-          final hasDistricts = state.districtList.isNotEmpty;
-          final hasCemeteries = state.cemeteryList.isNotEmpty;
-
           return Stack(
             children: [
               ListView(
                 padding: PaddingManager.normalPaddingAll(context),
                 children: [
                   // Ad
-                  TextField(
-                    controller: state.nameCtrl,
-                    textInputAction: TextInputAction.next,
-                    decoration: const InputDecoration(
-                      labelText: 'Ad',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                  CustomTextField(controller: state.nameCtrl, hintText: 'Ad'),
                   const SizedBox(height: 12),
-
-                  // Soyad
-                  TextField(
+                  CustomTextField(
                     controller: state.surnameCtrl,
-                    textInputAction: TextInputAction.search,
-                    onSubmitted: (_) => graveSearchViewModel.search(),
-                    decoration: const InputDecoration(
-                      labelText: 'Soyad',
-                      border: OutlineInputBorder(),
-                    ),
+                    hintText: 'Soyad',
                   ),
                   const SizedBox(height: 12),
-
-                  // İl
-                  DropdownButtonFormField<String>(
-                    isDense: true,
-                    initialValue: selectedProvince,
-                    decoration: const InputDecoration(
-                      labelText: 'İl',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: state.provinceList
-                        .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                        .toList(),
+                  // IL dropdown
+                  CustomDropdownField(
+                    labelText: ProjectString.province,
+                    items: state.provinceList,
+                    value: state.selectedProvince,
                     onChanged: (v) => graveSearchViewModel.onProvinceChanged(v),
                   ),
                   const SizedBox(height: 12),
 
-                  // İlçe
-                  DropdownButtonFormField<String>(
-                    isDense: true,
-                    initialValue: selectedDistrict,
-                    decoration: const InputDecoration(
-                      labelText: 'İlçe',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: state.districtList
-                        .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                        .toList(),
-                    onChanged: hasDistricts
-                        ? (v) => graveSearchViewModel.onDistrictChanged(v)
-                        : null,
+                  // İlçe dropdiwn
+                  CustomDropdownField(
+                    labelText: ProjectString.district,
+                    items: state.districtList,
+                    value: state.selectedDistrict,
+                    enabled: state.districtList.isNotEmpty, // boşsa disable
+                    onChanged: (v) => graveSearchViewModel.onDistrictChanged(v),
                   ),
+
                   const SizedBox(height: 12),
 
                   // Mezarlık
@@ -119,7 +73,13 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
                     children: [
                       DropdownButtonFormField<String>(
                         isDense: true,
-                        initialValue: selectedCemetery,
+                        initialValue:
+                            state.selectedCemetery != null &&
+                                state.cemeteryList.contains(
+                                  state.selectedCemetery,
+                                )
+                            ? state.selectedCemetery
+                            : null,
                         decoration: const InputDecoration(
                           labelText: 'Mezarlık',
                           border: OutlineInputBorder(),
@@ -130,11 +90,13 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
                               (e) => DropdownMenuItem(value: e, child: Text(e)),
                             )
                             .toList(),
-                        onChanged: hasCemeteries
+                        onChanged: state.cemeteryList.isNotEmpty
                             ? graveSearchViewModel.onCemeteryChanged
                             : null,
                       ),
-                      if (hasCemeteries && selectedCemetery != null)
+                      if (state.cemeteryList.isNotEmpty &&
+                          state.selectedCemetery != null &&
+                          state.cemeteryList.contains(state.selectedCemetery))
                         Positioned(
                           right: 6,
                           child: IconButton(
@@ -187,14 +149,11 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
                       separatorBuilder: (_, __) => const SizedBox(height: 8),
                       itemBuilder: (context, i) {
                         final r = state.results[i];
-
-                        final name = (r.name).toString().trim(); // null guard
+                        final name = (r.name).toString().trim();
                         final title = name.isEmpty ? '—' : name;
 
-                        // Modelinde 'cemetery' yok; 'Mezarlık' satırını 'Defin Yeri' ile gösterelim.
                         final subLeftTop = _kv('Defin Yeri', r.burialPlace);
                         final subRightTop = _kv('—', '—');
-
                         final subLeftBottom = _kv('Vefat', r.deathDate);
                         final subRightBottom = _kv('Defin', r.burialDate);
 

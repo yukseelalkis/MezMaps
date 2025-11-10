@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gen/gen.dart';
 import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
-import 'package:mezmaps/product/widgets/custom_app_bar.dart';
+import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart';
 
 class InfoView extends StatefulWidget {
   const InfoView({Key? key}) : super(key: key);

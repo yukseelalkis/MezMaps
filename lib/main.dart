@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mezmaps/feature/cemeteries/view/cemeteries_view.dart';
+import 'package:mezmaps/feature/grave_search/view/grave_search_view.dart';
 import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/theme/custom_dark_theme.dart';
 import 'package:mezmaps/product/theme/custom_ligth_theme.dart';
@@ -14,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
       themeMode: ThemeMode.light,
-      home: HomeView(),
+      home: CemeteriesView(),
     );
   }
 }

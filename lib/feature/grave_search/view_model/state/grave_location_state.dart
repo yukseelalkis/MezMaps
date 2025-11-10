@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:mezmaps/product/mock/model/grave_result.dart';
 
+@immutable
 final class GraveSearchState extends Equatable {
   final nameCtrl = TextEditingController();
   final surnameCtrl = TextEditingController();

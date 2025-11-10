@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@immutable
 final class CustomAppbar extends StatelessWidget
     implements PreferredSizeWidget {
   const CustomAppbar({required this.text, required this.widget, super.key});

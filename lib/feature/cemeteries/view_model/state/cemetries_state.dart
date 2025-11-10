@@ -2,6 +2,21 @@ import 'package:equatable/equatable.dart';
 import 'package:mezmaps/product/mock/model/mock_model.dart';
 
 final class CemetriesState extends Equatable {
+  final bool isLoading;
+  final String? error;
+  final List<Province> provinces;
+  final List<District> districts;
+  final List<Cemetery> cemeteries;
+  final String? selectedProvince;
+  final String? selectedDistrict;
+
+  List<String> get provinceList => provinces.map((e) => e.name).toList();
+
+  List<String> get districtList => districts.map((e) => e.name).toList();
+
+  List<String> get cemeteryList => cemeteries.map((e) => e.name).toList();
+
+  const CemetriesState.initial() : this(isLoading: false);
   const CemetriesState({
     required this.isLoading,
     this.error,
@@ -11,18 +26,6 @@ final class CemetriesState extends Equatable {
     this.selectedProvince,
     this.selectedDistrict,
   });
-
-  final bool isLoading;
-  final String? error;
-
-  final List<Province> provinces;
-  final List<District> districts;
-  final List<Cemetery> cemeteries;
-
-  final String? selectedProvince;
-  final String? selectedDistrict;
-
-  const CemetriesState.initial() : this(isLoading: false);
 
   @override
   List<Object?> get props => [

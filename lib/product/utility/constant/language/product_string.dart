@@ -25,5 +25,9 @@ final class ProjectString {
       'Sevdiklerinizi ziyaret etme sürecini daha anlamlı ve huzurlu hale getirmek için buradayız.';
   static const String aboutDs = 'Sorularınız için';
   static const String aboutDs1 = 'Bize Ulaşın';
-  
+  static const String province = 'Il';
+  static const String district = 'Ilce';
+  static const String selectProvince = 'İl/ilçe seçiniz';
+  static const String allMapButton = 'Hepsini Haritada Görüntüle';
+  static const String errorMapMessage = 'Harita açılamadı';
 }

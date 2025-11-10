@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 import 'package:gen/gen.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
-import 'package:mezmaps/product/widgets/custom_app_bar.dart';
-import 'package:mezmaps/feature/home/view/home_view.dart'; // BottomBar buradan geliyor
+import 'package:mezmaps/feature/home/view/home_view.dart';
+import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart'; // BottomBar buradan geliyor
 
 class DeathsPage extends StatelessWidget {
   const DeathsPage({super.key});
@@ -136,18 +136,18 @@ class DeathsPage extends StatelessWidget {
   }
 
   Widget _kv(String k, String v) => Row(
-        children: [
-          Text(
-            k,
-            style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Colors.black54,
-            ),
-          ),
-          const SizedBox(width: 6),
-          Text(v),
-        ],
-      );
+    children: [
+      Text(
+        k,
+        style: const TextStyle(
+          fontWeight: FontWeight.w700,
+          color: Colors.black54,
+        ),
+      ),
+      const SizedBox(width: 6),
+      Text(v),
+    ],
+  );
 }
 
 class _Grave {

@@ -1,4 +1,4 @@
-import 'package:common/src/core/dialog_base.dart';
+import 'package:common/src/core/base/dialog_base.dart';
 import 'package:flutter/material.dart';
 
 final class QuestionAnswer {
