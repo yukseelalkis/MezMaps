@@ -18,7 +18,7 @@ class DeathsPage extends StatelessWidget {
       'A-13',
       'Asri Mezarlık',
       "Esra",
-      "Bilo Baba",
+      "Bülent",
     ),
     _Grave(
       'Yüksel',
@@ -40,7 +40,7 @@ class DeathsPage extends StatelessWidget {
       'C-15',
       'Asri Mezarlık',
       'Meliha',
-      'İmam-ı Azam',
+      'Hüseyin',
     ),
     _Grave(
       "Eren",
@@ -61,7 +61,7 @@ class DeathsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppbar(
         text: ProjectString.deceasedPeople,
-        widget: Assets.icons.mkLight.image(package: 'gen', width: 35),
+        widget: Assets.icons.vfLight.image(package: 'gen', width: 35),
       ),
       body: Padding(
         padding: PaddingManager.normalPaddingAll(context),
