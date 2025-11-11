@@ -82,10 +82,10 @@ class CustomDarkTheme implements CustomTheme {
       // Yazı rengi: o zemine karşılık gelen kontrast rengi
       foregroundColor: WidgetStatePropertyAll(_scheme.onPrimaryContainer),
       // Hover / basılı renk: primary renginin %10 opak hali
-      overlayColor: WidgetStatePropertyAll(_scheme.primary.withOpacity(0.1)),
+      overlayColor: WidgetStatePropertyAll(_scheme.primary.withValues()),
       // Hafif gölge: dark mode’da derinlik verir
       elevation: const WidgetStatePropertyAll(4),
-      shadowColor: WidgetStatePropertyAll(_scheme.primary.withOpacity(0.4)),
+      shadowColor: WidgetStatePropertyAll(_scheme.primary.withValues()),
     ),
   );
 

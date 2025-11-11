@@ -30,4 +30,13 @@ final class ProjectString {
   static const String selectProvince = 'İl/ilçe seçiniz';
   static const String allMapButton = 'Hepsini Haritada Görüntüle';
   static const String errorMapMessage = 'Harita açılamadı';
+  static const String nameController = 'Isim';
+  static const String surnameController = 'Soyisim';
+  static const String searchButton = 'Ara';
+  static const String errorMessage = 'Sonuc Bulunamadi';
+  static const String buriatSite = 'Defin yeri';
+  static const String death = 'Vefat';
+  static const String buriat = 'Defin';
+  static const String registerGrave = 'Kayıtlı Mezar Sayısı:';
+  static const String errorSearchMessage = 'En az bir arama kriteri gir.';
 }

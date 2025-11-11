@@ -52,6 +52,16 @@ final class PaddingManager {
         vertical: MediaQuery.sizeOf(context).height * 0.01,
       );
 
+  /// Returns a small vertical padding used between items inside a card or list.
+  /// (Uses approximately 0.8% of screen height.)
+  static EdgeInsets verticalItemGap(BuildContext context) =>
+      EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height * 0.008);
+
+  /// Returns bottom padding between a card title and its content.
+  /// (Uses approximately 1.2% of screen height.)
+  static EdgeInsets cardTitlePadding(BuildContext context) =>
+      EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height * 0.012);
+
   static EdgeInsets responsiveLTRB(BuildContext context) => EdgeInsets.fromLTRB(
     MediaQuery.sizeOf(context).width * 0.04,
     MediaQuery.sizeOf(context).height * 0.015,

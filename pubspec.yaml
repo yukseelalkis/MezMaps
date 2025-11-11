@@ -14,7 +14,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.3.2
 
-
   equatable: ^2.0.5
   get_it: ^8.0.0
 

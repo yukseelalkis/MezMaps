@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 
-///TextField
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({required this.hintText, required this.controller});
+  const CustomTextField({
+    super.key,
+    required this.hintText,
+    required this.controller,
+    this.focusNode,
+    this.textInputAction,
+    this.onFieldSubmitted,
+    this.validator,
+  });
+
   final TextEditingController controller;
   final String hintText;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onFieldSubmitted;
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
-      obscureText: false,
+      focusNode: focusNode,
+      textInputAction: textInputAction,
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         labelText: hintText,
-
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
+      validator: validator,
     );
   }
 }

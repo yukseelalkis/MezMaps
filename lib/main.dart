@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: GraveSearchView(),
     );
   }

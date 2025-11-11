@@ -1,6 +1,5 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
 import 'package:mezmaps/feature/grave_search/view_model/mixin/grave_search_mixin.dart';
 import 'package:mezmaps/feature/grave_search/view_model/grave_search_view_model.dart';
@@ -8,21 +7,26 @@ import 'package:mezmaps/feature/grave_search/view_model/state/grave_search_state
 import 'package:mezmaps/feature/home/view/home_view.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
+import 'package:mezmaps/product/utility/mixin/form_validator_mixin.dart';
 import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart';
 import 'package:mezmaps/product/widgets/custom_text_field.dart';
+import 'package:mezmaps/product/widgets/drop_down_widget.dart/province_distirict_row.dart';
 
 part '../widgets/grave_search_widget.dart';
 
-class GraveSearchView extends StatefulWidget {
+final class GraveSearchView extends StatefulWidget {
   const GraveSearchView({super.key});
 
   @override
   State<GraveSearchView> createState() => _GraveSearchViewState();
 }
 
-@immutable
 final class _GraveSearchViewState extends BaseState<GraveSearchView>
     with GraveSearchMixin {
+
+      /// buradaki formkeyi State alsak mi bir soru
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
@@ -32,210 +36,49 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
         text: ProjectString.cemeteryLocations,
         widget: Assets.icons.mkLight.image(package: 'gen', width: 32),
       ),
-      body: BlocBuilder<GraveSearchViewModel, GraveSearchState>(
+      body: BaseBlocBody<GraveSearchViewModel, GraveSearchState>(
         bloc: graveSearchViewModel,
+        isLoading: (s) => s.isLoading,
+        error: (s) => s.error,
+        onRetry: () => graveSearchViewModel.load(),
         builder: (context, state) {
           return Stack(
             children: [
               ListView(
                 padding: PaddingManager.normalPaddingAll(context),
                 children: [
-                  // Ad
-                  CustomTextField(controller: state.nameCtrl, hintText: 'Ad'),
-                  const SizedBox(height: 12),
-
-                  // Soyad
-                  CustomTextField(
-                    controller: state.surnameCtrl,
-                    hintText: 'Soyad',
-                  ),
-                  const SizedBox(height: 12),
-
-                  // İl
-                  CustomDropdownField(
-                    labelText: ProjectString.province,
-                    items: state.provinceList,
-                    value:
-                        (state.selectedProvince != null &&
-                            state.provinceList.contains(state.selectedProvince))
-                        ? state.selectedProvince
-                        : null,
-                    onChanged: (v) => graveSearchViewModel.onProvinceChanged(v),
-                  ),
-                  const SizedBox(height: 12),
-
-                  // İlçe
-                  CustomDropdownField(
-                    labelText: ProjectString.district,
-                    items: state.districtList,
-                    value:
-                        (state.selectedDistrict != null &&
-                            state.districtList.contains(state.selectedDistrict))
-                        ? state.selectedDistrict
-                        : null,
-                    enabled: state.districtList.isNotEmpty,
-                    onChanged: (v) => graveSearchViewModel.onDistrictChanged(v),
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Mezarlık (String isim listesi)
-                  DropdownButtonFormField<String>(
-                    isDense: true,
-                    value:
-                        (state.selectedCemetery != null &&
-                            state.cemeteryList.contains(state.selectedCemetery))
-                        ? state.selectedCemetery
-                        : null,
-                    decoration: const InputDecoration(
-                      labelText: 'Mezarlık',
-                      border: OutlineInputBorder(),
-                    ),
-                    hint: const Text('Mezarlık seçiniz'),
-                    items: state.cemeteryList
-                        .map(
-                          (e) => DropdownMenuItem<String>(
-                            value: e,
-                            child: Text(e),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: state.cemeteryList.isNotEmpty
-                        ? graveSearchViewModel.onCemeteryChanged
-                        : null,
+                  // FORM
+                  GraveSearchForm(
+                    state: state,
+                    viewModel: graveSearchViewModel,
+                    formKey: _formKey,
                   ),
 
-                  // Seçimi temizle (varsa)
-                  if (state.cemeteryList.isNotEmpty &&
-                      state.selectedCemetery != null &&
-                      state.cemeteryList.contains(state.selectedCemetery))
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        tooltip: 'Seçimi temizle',
-                        icon: const Icon(Icons.close, size: 20),
-                        color: cs.primary,
-                        onPressed: () =>
-                            graveSearchViewModel.onCemeteryChanged(null),
-                      ),
-                    ),
-
-                  const SizedBox(height: 12),
-
-                  // Ara
-                  SizedBox(
-                    height: 48,
-                    child: FilledButton.icon(
-                      icon: const Icon(Icons.search),
-                      onPressed: state.isLoading
-                          ? null
-                          : graveSearchViewModel.search,
-                      label: const Text('Ara'),
-                    ),
+                  _SearchButton(
+                    formKey: _formKey,
+                    viewModel: graveSearchViewModel,
+                    state: state,
                   ),
-                  const SizedBox(height: 16),
                   const Divider(),
-                  const SizedBox(height: 8),
-
-                  // Sonuç sayısı
-                  Text(
-                    'Kayıtlı Mezar Sayısı: ${state.results.length}',
-                    style: TextStyle(color: cs.onSurfaceVariant),
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Sonuç listesi
+                  ResultCountText(count: state.results.length),
+                  // SONUÇLAR
                   if (state.results.isEmpty)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 32),
-                      child: Text(
-                        'Sonuç bulunamadı',
-                        style: TextStyle(color: cs.onSurfaceVariant),
-                        textAlign: TextAlign.center,
-                      ),
-                    )
+                    const _EmptyResults()
                   else
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.results.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 8),
-                      itemBuilder: (context, i) {
-                        final r = state.results[i];
-                        final title = (r.name ?? '').trim().isEmpty
-                            ? '—'
-                            : (r.name ?? '');
-
-                        final subLeftTop = _kv('Defin Yeri', r.burialPlace);
-                        final subRightTop = _kv('—', '—');
-                        final subLeftBottom = _kv('Vefat', r.deathDate);
-                        final subRightBottom = _kv('Defin', r.burialDate);
-
-                        return Card(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                            side: BorderSide(color: cs.outlineVariant),
-                          ),
-                          child: Padding(
-                            padding: PaddingManager.responsiveLTRB(context),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  title,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18,
-                                    color: cs.primary,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [subLeftTop, subRightTop],
-                                ),
-                                const SizedBox(height: 6),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [subLeftBottom, subRightBottom],
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  const SizedBox(height: 24),
+                    _GraveResultsList(cs: cs, state: state),
                 ],
               ),
-
-              // Loading overlay
+              // LOADING OVERLAY
               if (state.isLoading)
                 ColoredBox(
-                  color: cs.surface.withOpacity(0.4),
+                  color: cs.surface.withValues(),
                   child: const Center(child: CircularProgressIndicator()),
                 ),
             ],
           );
         },
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
-
-  Widget _kv(String k, String? v) => Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Text(
-        '$k: ',
-        style: const TextStyle(
-          fontWeight: FontWeight.w700,
-          color: Colors.black54,
-        ),
-      ),
-      Text((v == null || v.trim().isEmpty) ? '-' : v),
-    ],
-  );
 }

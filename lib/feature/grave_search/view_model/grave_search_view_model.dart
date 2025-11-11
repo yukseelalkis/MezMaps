@@ -184,4 +184,22 @@ final class GraveSearchViewModel extends BaseCubit<GraveSearchState>
     state.surnameCtrl.dispose();
     return super.close();
   }
+
+  void enableAutovalidate() {
+    emit(state.copyWith(autovalidate: true));
+  }
+
+  bool validateBeforeSearch() {
+    // 1) En az bir kriter girilmiş mi?
+    if (!state.hasAnyFilter) {
+      return false;
+    }
+
+    // 2) İl/ilçe zorunluysa kontrol et (isteğe bağlı)
+    if (state.selectedProvince == null || state.selectedDistrict == null) {
+      return false;
+    }
+
+    return true;
+  }
 }
