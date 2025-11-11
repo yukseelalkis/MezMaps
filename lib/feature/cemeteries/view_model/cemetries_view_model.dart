@@ -9,7 +9,7 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
     with ProvinceDistrictData {
   CemetriesViewModel(this._repo) : super(const CemetriesState.initial());
 
-  final ICemeteryRepository _repo;
+  final IProvinceRepo _repo;
 
   /// These `@override` methods in the `CemetriesViewModel` class are implementing getters for certain
   /// properties from the `CemetriesState` class. Here's what each of these getters is doing:

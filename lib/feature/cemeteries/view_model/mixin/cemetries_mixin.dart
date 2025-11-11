@@ -9,7 +9,6 @@ mixin CemetriesMixin on BaseState<CemeteriesView> {
   CemetriesViewModel get cemeteriesViewModel => _cemetriesViewModel;
   @override
   void initState() {
-    // repo’yu Cubit'e veriyoruz
     _cemetriesViewModel = CemetriesViewModel(MockCemeteryRepository());
 
     WidgetsBinding.instance.addPostFrameCallback((_) {

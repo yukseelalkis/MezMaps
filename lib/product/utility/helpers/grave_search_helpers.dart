@@ -1,5 +1,5 @@
 import 'package:common/common.dart';
-import 'package:mezmaps/feature/grave_search/view_model/state/grave_location_state.dart';
+import 'package:mezmaps/feature/grave_search/view_model/state/grave_search_state.dart';
 import 'package:mezmaps/product/mock/model/grave_result.dart';
 
 typedef GraveFilters = ({

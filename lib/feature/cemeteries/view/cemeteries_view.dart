@@ -11,7 +11,7 @@ import 'package:mezmaps/product/utility/constant/language/product_string.dart';
 import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart';
 import 'package:mezmaps/product/widgets/drop_down_widget.dart/province_distirict_row.dart';
 
-part '../widgets/all_map_button.dart';
+part '../widgets/cemeteries_widget.dart';
 
 class CemeteriesView extends StatefulWidget {
   const CemeteriesView({super.key});
