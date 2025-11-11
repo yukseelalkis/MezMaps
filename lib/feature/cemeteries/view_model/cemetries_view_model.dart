@@ -1,4 +1,3 @@
-// import 'package:mezmaps/feature/cemeteries/view_model/state/cemetries_state.dart';
 import 'package:common/common.dart';
 import 'package:mezmaps/feature/cemeteries/view_model/state/cemetries_state.dart';
 import 'package:mezmaps/product/mock/interface/cemetery_repository.dart';
@@ -12,6 +11,9 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
 
   final ICemeteryRepository _repo;
 
+  /// These `@override` methods in the `CemetriesViewModel` class are implementing getters for certain
+  /// properties from the `CemetriesState` class. Here's what each of these getters is doing:
+
   @override
   List<String> get provinceList => state.provinceList;
 
@@ -24,8 +26,14 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
   @override
   String? get selectedDistrict => state.selectedDistrict;
 
-  // ... (load metodu)
-
+  /// The `load` function fetches provinces, districts, and cemeteries data based on certain conditions
+  /// and updates the state accordingly, handling errors if they occur.
+  ///
+  /// Returns:
+  ///   If the `provinces` list is empty, a state with empty lists for `provinces`, `districts`, and
+  /// `cemeteries`, and `null` values for `selectedProvince` and `selectedDistrict` is being returned.
+  /// Otherwise, a state with the loaded data including `provinces`, `districts`, `cemeteries`,
+  /// `selectedProvince`, and `selectedDistrict`
   /// İlk yükleme
   Future<void> load() async {
     emit(state.copyWith(isLoading: true, error: null));
@@ -79,9 +87,7 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
     }
   }
 
-  /// İl değişti
   @override
-  // PARAMETRE DÜZELTİLDİ: String yerine String? (nullable) kullanıldı
   Future<void> onProvinceChanged(String? province) async {
     // province null gelirse seçimleri sıfırla
     if (province == null) {
@@ -131,8 +137,20 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
     }
   }
 
+  /// This function updates the state with selected district and list of cemeteries based on the selected
+  /// province and district, handling loading and error states.
+  ///
+  /// Args:
+  ///   district (String): The `onDistrictChanged` method is a function that handles changes in the
+  /// selected district. It first checks if the selected province is null or if the district is null, in
+  /// which case it resets the selected district and clears the list of cemeteries.
+  ///
+  /// Returns:
+  ///   In the `onDistrictChanged` method, if the `province` is null or the `district` is null, the state
+  /// is updated with `selectedDistrict` set to null and `cemeteries` set to an empty list. After that, a
+  /// return statement is used to exit the method early.
+
   @override
-  // PARAMETRE DÜZELTİLDİ: String yerine String? (nullable) kullanıldı
   Future<void> onDistrictChanged(String? district) async {
     final String? province = state.selectedProvince;
     // district null gelirse veya province yoksa sıfırla/durdur
@@ -160,11 +178,21 @@ final class CemetriesViewModel extends BaseCubit<CemetriesState>
     }
   }
 
+  /// This Dart function triggers the opening of a cemetery map and returns a boolean indicating whether
+  /// the operation was successful.
+  ///
+  /// Args:
+  ///   c (Cemetery): The parameter `c` represents a `Cemetery` object, which likely contains information
+  /// about a cemetery such as its latitude, longitude, name, and other relevant details. In the provided
+  /// code snippet, this `Cemetery` object `c` is used to open the map of the specified cemetery location
+  ///
+  /// Returns:
+  ///   The function `openCemeteryMap` returns a `Future<bool>` which indicates whether the operation of
+  /// opening the map for the specified cemetery was successful or not. This boolean value can be used in
+  /// the UI layer to show a SnackBar message to the user.
   /// Belirtilen mezarlığın haritasını açma işlemini tetikler.
   /// İşlemin başarılı olup olmadığını döndürür (UI katmanında SnackBar göstermek için).
   Future<bool> openCemeteryMap(Cemetery c) async {
-    // NOT: urlPackage import edilmeli/erişilebilir olmalıdır.
-
     final ok = await urlPackage.openMap(
       lat: c.lat,
       lng: c.lng,

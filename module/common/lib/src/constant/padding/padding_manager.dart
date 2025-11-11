@@ -44,6 +44,14 @@ final class PaddingManager {
   static EdgeInsets buttonContentPadding(BuildContext context) =>
       EdgeInsets.only(right: MediaQuery.sizeOf(context).width * 0.06);
 
+  /// Returns a padding optimized for list items or small sections.
+  /// (Uses approx. 4% of width for horizontal, 1% of height for vertical)
+  static EdgeInsets listItemPadding(BuildContext context) =>
+      EdgeInsets.symmetric(
+        horizontal: MediaQuery.sizeOf(context).width * 0.04,
+        vertical: MediaQuery.sizeOf(context).height * 0.01,
+      );
+
   static EdgeInsets responsiveLTRB(BuildContext context) => EdgeInsets.fromLTRB(
     MediaQuery.sizeOf(context).width * 0.04,
     MediaQuery.sizeOf(context).height * 0.015,

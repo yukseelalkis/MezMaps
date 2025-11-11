@@ -12,7 +12,6 @@ mixin CemetriesMixin on BaseState<CemeteriesView> {
     // repo’yu Cubit'e veriyoruz
     _cemetriesViewModel = CemetriesViewModel(MockCemeteryRepository());
 
-    // Ekran yüklendikten sonra Cubit’in load() fonksiyonunu çalıştırıyoruz
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _cemetriesViewModel.load();
     });
@@ -21,7 +20,7 @@ mixin CemetriesMixin on BaseState<CemeteriesView> {
 
   @override
   void dispose() {
-    _cemetriesViewModel.close(); // BaseCubit -> Bloc’ta dispose gibi
+    _cemetriesViewModel.close();
     super.dispose();
   }
 }

@@ -1,5 +1,7 @@
 part of '../view/cemeteries_view.dart';
 
+/// The `_AllMapButton` class is a StatelessWidget in Dart that represents a button widget used in the
+/// UI. Here's a breakdown of what it does:
 @immutable
 final class _AllMapButton extends StatelessWidget {
   const _AllMapButton({required this.onPressed});
@@ -16,6 +18,8 @@ final class _AllMapButton extends StatelessWidget {
   }
 }
 
+/// The `_CemeteriesCard` class in Dart is a StatelessWidget that represents a card widget used in the
+/// UI to display information about a cemetery. Here's a breakdown of what it does:
 @immutable
 final class _CemeteriesCard extends StatelessWidget {
   const _CemeteriesCard({required this.onTap, required this.c});
@@ -27,11 +31,8 @@ final class _CemeteriesCard extends StatelessWidget {
     return Card(
       elevation: 10,
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        title: Text(
-          c.name,
-          style: const TextStyle(fontWeight: FontWeight.w600),
-        ),
+        contentPadding: PaddingManager.listItemPadding(context),
+        title: Text(c.name),
         trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 18),
 
         onTap: onTap,
@@ -40,7 +41,9 @@ final class _CemeteriesCard extends StatelessWidget {
   }
 }
 
-// CemeteriesView dosyasının altında (Private Widget olarak)
+/// The `_CemeteriesEmptyState` class in Dart is a `StatelessWidget` that represents a widget used in
+/// the UI to display a message when there are no cemetery records available for a selected province and
+/// district.
 @immutable
 final class _CemeteriesEmptyState extends StatelessWidget {
   const _CemeteriesEmptyState({
@@ -63,6 +66,9 @@ final class _CemeteriesEmptyState extends StatelessWidget {
   }
 }
 
+/// The `_CemeteriesList` class in Dart is a `StatelessWidget` that represents a list widget used in
+/// the UI to display a list of cemetery items. Here's a breakdown of what it does:
+
 @immutable
 final class _CemeteriesList extends StatelessWidget {
   const _CemeteriesList({required this.cemeteries, required this.viewModel});
@@ -81,12 +87,9 @@ final class _CemeteriesList extends StatelessWidget {
         final c = cemeteries[i];
         return _CemeteriesCard(
           c: c,
-          // onTap mantığını burada tanımlıyoruz
           onTap: () async {
-            // ViewModel'deki mantığı çağır
             final ok = await viewModel.openCemeteryMap(c);
 
-            // UI'a ait hata gösterimini burada tutuyoruz
             if (!ok && context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text(ProjectString.errorMapMessage)),

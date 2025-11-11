@@ -40,6 +40,9 @@ final class _CemeteriesViewState extends BaseState<CemeteriesView>
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+             /// The code snippet you provided is creating a `Padding` widget with specific padding
+             /// using `PaddingManager.normalPaddingAll(context)`. Inside this `Padding` widget, there
+             /// is a `ProvinceDistrictRow` widget being displayed.
                 Padding(
                   padding: PaddingManager.normalPaddingAll(context),
                   child: ProvinceDistrictRow(
@@ -52,13 +55,14 @@ final class _CemeteriesViewState extends BaseState<CemeteriesView>
 
                 /// ---------- Mezarlık Listesi ----------
                 Expanded(
-                  // Error
+                  /// This code snippet is a ternary operator in Dart. It is used to
+                  /// conditionally render either the `_CemeteriesEmptyState` widget or the
+                  /// `_CemeteriesList` widget based on the condition `state.cemeteries.isEmpty`.
                   child: state.cemeteries.isEmpty
                       ? _CemeteriesEmptyState(
                           selectedProvince: state.selectedProvince,
                           selectedDistrict: state.selectedDistrict,
                         )
-                      /// BURAYA BASKA WIDGET
                       : _CemeteriesList(
                           cemeteries: state.cemeteries,
                           viewModel: cemeteriesViewModel,
