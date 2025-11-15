@@ -63,7 +63,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             ),
             text: ProjectString.deceasedPeople,
             onPressed: () {
-              context.pushTo(DeathsPage());
+              context.pushTo(DeathsView());
             },
           ),
           _CustomButton(

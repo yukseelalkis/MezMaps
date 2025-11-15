@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mezmaps/feature/deaths/view/deaths_view.dart';
 import 'package:mezmaps/feature/grave_search/view/grave_search_view.dart';
 import 'package:mezmaps/product/theme/custom_dark_theme.dart';
 import 'package:mezmaps/product/theme/custom_ligth_theme.dart';
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: CustomDarkTheme().themeData,
       theme: CustomLightTheme().themeData,
-      themeMode: ThemeMode.dark,
-      home: GraveSearchView(),
+      themeMode: ThemeMode.light,
+      home: DeathsView(),
     );
   }
 }

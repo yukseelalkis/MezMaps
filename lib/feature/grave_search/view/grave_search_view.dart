@@ -5,12 +5,15 @@ import 'package:mezmaps/feature/grave_search/view_model/mixin/grave_search_mixin
 import 'package:mezmaps/feature/grave_search/view_model/grave_search_view_model.dart';
 import 'package:mezmaps/feature/grave_search/view_model/state/grave_search_state.dart';
 import 'package:mezmaps/feature/home/view/home_view.dart';
+import 'package:mezmaps/product/mock/model/grave_result.dart';
 import 'package:mezmaps/product/state/base/base_state.dart';
 import 'package:mezmaps/product/utility/constant/language/product_string.dart';
 import 'package:mezmaps/product/utility/mixin/form_validator_mixin.dart';
 import 'package:mezmaps/product/widgets/app_bar/custom_app_bar.dart';
 import 'package:mezmaps/product/widgets/custom_text_field.dart';
-import 'package:mezmaps/product/widgets/drop_down_widget.dart/province_distirict_row.dart';
+import 'package:mezmaps/product/widgets/drop_down_widget/province_distirict_row.dart';
+import 'package:mezmaps/product/widgets/empty_widget/empty_widget.dart';
+import 'package:mezmaps/product/widgets/grave_result_list/grave_result_list.dart';
 
 part '../widgets/grave_search_widget.dart';
 
@@ -23,8 +26,6 @@ final class GraveSearchView extends StatefulWidget {
 
 final class _GraveSearchViewState extends BaseState<GraveSearchView>
     with GraveSearchMixin {
-
-      /// buradaki formkeyi State alsak mi bir soru
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -63,9 +64,12 @@ final class _GraveSearchViewState extends BaseState<GraveSearchView>
                   ResultCountText(count: state.results.length),
                   // SONUÇLAR
                   if (state.results.isEmpty)
-                    const _EmptyResults()
+                    const EmptyResults()
                   else
-                    _GraveResultsList(cs: cs, state: state),
+                    GraveResultsList<GraveSearchState, GraveResult>(
+                      state: state,
+                      resultsSelector: (s) => s.results,
+                    ),
                 ],
               ),
               // LOADING OVERLAY

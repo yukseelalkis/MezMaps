@@ -105,7 +105,9 @@ class BottomBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.replaceNoAnim(DeathsView());
+                },
                 icon: Assets.icons.vfLight.image(
                   package: 'gen',
                   width: 24,

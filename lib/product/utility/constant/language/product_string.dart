@@ -39,4 +39,5 @@ final class ProjectString {
   static const String buriat = 'Defin';
   static const String registerGrave = 'Kayıtlı Mezar Sayısı:';
   static const String errorSearchMessage = 'En az bir arama kriteri gir.';
+  static const String deathsHeader = 'Vefat Edenler';
 }
